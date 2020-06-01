@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game.Engine.Monsters.MonsterFactories
 {
+    [Serializable]
     class QSDragonFactory : MonsterFactory
     {
         private int encounterNumber = 0; // how many times has this factory been used already?

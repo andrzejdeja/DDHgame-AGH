@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.Engine.Interactions.Elfs
+namespace Game.Engine.Interactions.ElfStory
 {
-    class ElfPriest
+    interface IElfStrategy
     {
+        void Execute(GameSession sesion);
     }
 }
