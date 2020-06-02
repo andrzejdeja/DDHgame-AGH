@@ -79,9 +79,7 @@ namespace Game.Engine.Interactions.ElfStory
             switch (choice)
             {
                 case 0:
-                    parentSession.SendText("\nHurry... I will die in 10 minutes...");
                     //starttime = DateTime.Now;
-                    parentSession.SendText("\nHurry... I will die in 10 minutes...");
                     parentSession.AddThisItem(new Game.Engine.Items.QuestItem.ElfsSack());
                     parentSession.SendText("\nHurry... I will die in 10 minutes...");
                     visited = 1;
