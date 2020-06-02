@@ -6,6 +6,7 @@ using Game.Engine.Items;
 using Game.Engine.Items.ItemFactories;
 using Game.Engine.Items.BasicArmor;
 using Game.Engine.Items.UncommonWeapon;
+using Game.Engine.Items.QuestItem;
 using Game.Engine.Interactions;
 using Game.Engine.Interactions.InteractionFactories;
 
@@ -37,7 +38,10 @@ namespace Game.Engine
             new GrowingStoneArmor(),
             new LuckySword(),
             new TraitorsBlade(),
-            new VampiricFalchion()
+            new VampiricFalchion(),
+            new ElfsChestKey(),
+            new ElfsSack(),
+            new ElfsTalisman()
         };
 
         private static List<ItemFactory> itemFactories = new List<ItemFactory>()
@@ -56,9 +60,14 @@ namespace Game.Engine
         private static List<InteractionFactory> interactionFactories = new List<InteractionFactory>()
         {
             new SkillForgetFactory(),
-            new GymirHymirFactory(),
+            new GymirHymirFactory()
+        };
+
+        private static List<InteractionFactory> elfFactories = new List<InteractionFactory>()
+        {
             new ElfFactory()
         };
+        
 
     }
 }

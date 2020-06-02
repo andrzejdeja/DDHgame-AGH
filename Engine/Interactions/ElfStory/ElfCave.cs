@@ -17,7 +17,7 @@ namespace Game.Engine.Interactions.ElfStory
         protected override void RunContent()
         {
 
-            if (parentSession.TestForItem("Elven Sorcerer's Talisman"))
+            if (parentSession.TestForItem("item0014"))
             {
                 visited = true;
                 parentSession.SendText("\nI feel magic, but talisman is working. I can pass.");

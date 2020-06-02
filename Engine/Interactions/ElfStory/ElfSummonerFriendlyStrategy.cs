@@ -42,12 +42,14 @@ namespace Game.Engine.Interactions.ElfStory
                 case 0:
                     if (parentSession.currentPlayer.Gold >= 2)
                     {
+                        parentSession.UpdateStat(8, -2);
                         parentSession.FightThisMonster(new Game.Engine.Monsters.MonsterFactories.RatFactory().Create(parentSession.currentPlayer.Level));
                     }
                     break;
                 case 1:
                     if (parentSession.currentPlayer.Gold >= 10)
                     {
+                        parentSession.UpdateStat(8, -10);
                         parentSession.FightThisMonster(new Game.Engine.Monsters.MonsterFactories.DemonFactory().Create(parentSession.currentPlayer.Level));
                     }
                     break;

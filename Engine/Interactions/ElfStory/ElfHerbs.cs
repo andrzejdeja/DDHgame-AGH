@@ -10,6 +10,7 @@ namespace Game.Engine.Interactions.ElfStory
     class ElfHerbs : ConsoleInteraction
     {
         public bool visited = false;
+        public bool active = false;
         public ElfHerbs(GameSession session) : base(session)
         {
             Name = "interaction0006";
@@ -17,16 +18,23 @@ namespace Game.Engine.Interactions.ElfStory
         }
         protected override void RunContent()
         {
-            parentSession.SendText("\nElven Priest was taking about this herb.");
-            if(parentSession.TestForItem("Elven Sack"))
+            if (active)
             {
-                parentSession.UpdateStat(7, 50); //EXP +50
-                visited = true;
-                Enterable = false;
+                parentSession.SendText("\nElven Priest was taking about this herb.");
+                if (parentSession.TestForItem("item0013"))
+                {
+                    parentSession.UpdateStat(7, 50); //EXP +50
+                    visited = true;
+                    active = false;
+                }
+                else
+                {
+                    parentSession.SendText("\nI need Elven Sack...");
+                }
             }
             else
             {
-                parentSession.SendText("\nI need Elven Sack...");
+                parentSession.SendText("Just some herbs...");
             }
         }
     }

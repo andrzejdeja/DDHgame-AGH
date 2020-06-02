@@ -1,3 +1,6 @@
+==================================================================================================================
+PART 1:
+
 MONSTERS:
 
 SQdragon class implements Silverquick Dragon that has:
@@ -61,3 +64,42 @@ AdvancedWeaponMoveFactory returns those skilla and can combine two skills into c
 Other notes:
 Displayed damage is wrong, as far as I checked it doesn't consider modifications made by ModifyOffensive and ModifyDeffensive.
 Once character died after dealing fatal hit. Couldn't replicate.
+
+==================================================================================================================
+PART 2:
+
+ElfFactory Creates group of Elfs represented by classes ElfPriestEncounter, ElfSoldierEncounter, ElfSorcererEncounter, ElfSummonerEncounter and some map tiles represented by classes ElfHerbs, ElfCave, ElfChest.
+By default Elfs are hostile. Soldier uses ElfSoldierHostileStrategy, meanwhile Sorcerer and Summoner use common ElfHostileStrategy.
+
+ElfHostileStrategy - Elf does not interact with player.
+ElfSoldierHostileStrategy - Soldier extorts player for 15 gold. If player does not play, player has to deffend.
+
+TODO: Add Soldier as opponent.
+
+Priest is the only way to start interaction with Elfs. If player decides to help Priest, he gets an item of a class ElfsSack and is instructed to grab 4 herbs and bring them back in 10 minutes.
+To do it player has to interact with 4 objects of a class ElfHerbs. 
+Player can't positively interact with them:
+-if ElfsSack is not active item
+-if player hasn't started the mission
+-if player finished the mission
+
+If player succedes, ElfPriestEncounter changes strategies of Elfs to their Friendly counterparts: ElfSoldierFriendlyStrategy, ElfSorcererFriendlyStrategy, ElfSummonerFriendlyStrategy.
+Otherwise priest "dies". If player tried to save him, but was too late, he has to fight Demon. There is no other way to make Elfs friendly.
+
+Another interaction with Priest gives player a key (class ElfsChestKey) to Elves Chests (class ElfChest) scattered around the world.
+As expected player can positively interact only if an item of a class ElfsChestKey is active.
+Chest can contain:
+-Rat (20%)
+-Gold (30%)
+-Random item (50%)
+
+ElfSoldierFriendlyStrategy - Soldier does not extort player and has 3% chance of giving him a random item.
+
+ElfSorcererFriendlyStrategy - Sorcerer gives player a talisman (class ElfsTalisman) that lets him enter Elves Caves (class ElfCave), when active.
+
+ElfCave - Player has to fight QuickSilver Dragon (class QSDragon). 
+Rewards:
+Gold (50%)
+Gold + Random item (50%)
+
+ElfSummonerFriendlyStrategy - Summoner can summon monsters for gold.

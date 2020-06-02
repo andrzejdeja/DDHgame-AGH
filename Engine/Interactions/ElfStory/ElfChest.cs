@@ -13,11 +13,12 @@ namespace Game.Engine.Interactions.ElfStory
         public ElfChest (GameSession session) : base(session)
         {
             Name = "interaction0005";
+            this.Enterable = false;
         }
         protected override void RunContent()
         {
             
-            if (parentSession.TestForItem("Elven Priest's Key"))
+            if (parentSession.TestForItem("item0012"))
             {
                 parentSession.UpdateStat(7, 50); //EXP +50
                 visited = true;

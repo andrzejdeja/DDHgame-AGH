@@ -17,7 +17,7 @@ namespace Game.Engine.Interactions.ElfStory
                 case 0:
                     if (parentSession.currentPlayer.Gold >= 15)
                     {
-                        parentSession.currentPlayer.Gold -= 15;
+                        parentSession.UpdateStat(8, -15);
                         break;
                     }
                     parentSession.SendText("\nAre you trying to disrespect me? That is not even 15 gold!");

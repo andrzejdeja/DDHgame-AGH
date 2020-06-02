@@ -14,7 +14,7 @@ namespace Game.Engine.Interactions.ElfStory
         private ElfSorcererEncounter sorcerer;
         private ElfSummonerEncounter summoner;
         private int visited = 0;
-        //private DateTime starttime = DateTime.MinValue;
+        private DateTime starttime = DateTime.MinValue;
         public ElfPriestEncounter(GameSession session, List<ElfSoldierEncounter> _soldiers, List<ElfHerbs> _herbs, ElfSorcererEncounter _sorcerer, ElfSummonerEncounter _summoner) : base(session)
         {
             Name = "interaction0007";
@@ -32,11 +32,12 @@ namespace Game.Engine.Interactions.ElfStory
             }
             if (visited == 1) // resolve quest
             {
-                //long time = (long)((TimeSpan)(DateTime.Now - starttime)).TotalSeconds;
-                long time = 100;
+                long time = (long)((TimeSpan)(DateTime.Now - starttime)).TotalSeconds;
+                //long time = 100;
                 if (time > 600)
                 {
                     visited = -1;
+                    foreach (ElfHerbs e in herbs) e.active = false;
                     parentSession.SendText("\nYou are late. Priest died.");
                     parentSession.FightThisMonster(new Game.Engine.Monsters.CruelDemon(parentSession.currentPlayer.Level));
                     return;
@@ -49,8 +50,8 @@ namespace Game.Engine.Interactions.ElfStory
                     parentSession.SendText("\nYou came back! Thank you. I will get better in a second. Elfs won't forget that you helped me!");
                     parentSession.UpdateStat(7, 750); //EXP +750
                     visited = 2;
-                    foreach (ElfSoldierEncounter e in soldiers)
-                        e.Strategy = new ElfSoldierFriendlyStrategy();
+                    foreach (ElfHerbs e in herbs) e.active = false;
+                    foreach (ElfSoldierEncounter e in soldiers) e.Strategy = new ElfSoldierFriendlyStrategy();
                     sorcerer.Strategy = new ElfSorcererFriendlyStrategy();
                     summoner.Strategy = new ElfSummonerFriendlyStrategy();
                 }
@@ -79,8 +80,9 @@ namespace Game.Engine.Interactions.ElfStory
             switch (choice)
             {
                 case 0:
-                    //starttime = DateTime.Now;
+                    starttime = DateTime.Now;
                     parentSession.AddThisItem(new Game.Engine.Items.QuestItem.ElfsSack());
+                    foreach (ElfHerbs e in herbs) e.active = true;
                     parentSession.SendText("\nHurry... I will die in 10 minutes...");
                     visited = 1;
                     break;

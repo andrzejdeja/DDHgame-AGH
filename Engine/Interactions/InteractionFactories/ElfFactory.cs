@@ -14,11 +14,11 @@ namespace Game.Engine.Interactions.InteractionFactories
         public List<Interaction> CreateInteractionsGroup(GameSession parentSession)
         {
             List<ElfSoldierEncounter> soldiers = new List<ElfSoldierEncounter>();
-            for(int i = 0; i < 8; i++)
+            for(int i = 0; i < 12; i++)
                 soldiers.Add(new ElfSoldierEncounter(parentSession));
 
             List<ElfHerbs> herbs = new List<ElfHerbs>();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 32; i++)
                 herbs.Add(new ElfHerbs(parentSession));
 
             List<ElfCave> caves = new List<ElfCave>();
@@ -26,7 +26,7 @@ namespace Game.Engine.Interactions.InteractionFactories
                 caves.Add(new ElfCave(parentSession));
 
             List<ElfChest> chests = new List<ElfChest>();
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 12; i++)
                 chests.Add(new ElfChest(parentSession));
 
             ElfSorcererEncounter sorcerer = new ElfSorcererEncounter(parentSession, caves);

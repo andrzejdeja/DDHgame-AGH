@@ -10,16 +10,16 @@ namespace Game.Engine
     {
         private GameSession parentSession;
         // how many maps in total in the game world
-        private const int maps = 25;
-        private int minPortals = 35;
+        private const int maps = 5;
+        private int minPortals = 10;
         // connections between maps
         private int[,] adjacencyMatrix = new int[maps, maps];
         private int[] visited;
         private int lastNumber;
         private int currentNumber;
         // interactions
-        private int shops = 20; // number of shops in the game world
-        private int interactions = 25; // number of all interactions (including shops) in the game world (can be slightly bigger due to quest constraints)
+        private int shops = 10; // number of shops in the game world
+        private int interactions = 15; // number of all interactions (including shops) in the game world (can be slightly bigger due to quest constraints)
         private List<Interaction> interactionList;
         // maps
         private MapMatrix[] matrix;
@@ -117,6 +117,7 @@ namespace Game.Engine
             interactionList = new List<Interaction>();
             for (int i = 0; i < shops; i++) interactionList.Add(new ShopInteraction(parentSession));
             for (int i = shops; i < interactions; i++) interactionList.AddRange(Index.DrawInteractions(parentSession));
+            interactionList.AddRange(new Game.Engine.Interactions.InteractionFactories.ElfFactory().CreateInteractionsGroup(parentSession)); //TODO: fix math (number of interactions)
         }
     }
 }
