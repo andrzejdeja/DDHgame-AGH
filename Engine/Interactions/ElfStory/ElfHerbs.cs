@@ -10,7 +10,7 @@ namespace Game.Engine.Interactions.ElfStory
     class ElfHerbs : ConsoleInteraction
     {
         public bool visited = false;
-        public ElfHerbs(GameSession ses) : base(ses)
+        public ElfHerbs(GameSession session) : base(session)
         {
             Name = "interaction0006";
             this.Enterable = false;

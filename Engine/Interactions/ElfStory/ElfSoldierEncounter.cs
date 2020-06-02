@@ -9,7 +9,7 @@ namespace Game.Engine.Interactions.ElfStory
     class ElfSoldierEncounter : ListBoxInteraction
     {
         public IElfStrategy Strategy { get; set; }
-        public ElfSoldierEncounter(GameSession ses) : base(ses)
+        public ElfSoldierEncounter(GameSession session) : base(session)
         {
             Name = "interaction0008";
             Strategy = new ElfSoldierHostileStrategy(); // start with hostile strategy

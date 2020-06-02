@@ -14,8 +14,8 @@ namespace Game.Engine.Interactions.ElfStory
         private ElfSorcererEncounter sorcerer;
         private ElfSummonerEncounter summoner;
         private int visited = 0;
-        private DateTime starttime = DateTime.MinValue;
-        public ElfPriestEncounter(GameSession ses, List<ElfSoldierEncounter> _soldiers, List<ElfHerbs> _herbs, ElfSorcererEncounter _sorcerer, ElfSummonerEncounter _summoner) : base(ses)
+        //private DateTime starttime = DateTime.MinValue;
+        public ElfPriestEncounter(GameSession session, List<ElfSoldierEncounter> _soldiers, List<ElfHerbs> _herbs, ElfSorcererEncounter _sorcerer, ElfSummonerEncounter _summoner) : base(session)
         {
             Name = "interaction0007";
             this.soldiers = _soldiers;
@@ -32,7 +32,8 @@ namespace Game.Engine.Interactions.ElfStory
             }
             if (visited == 1) // resolve quest
             {
-                long time = (long)((TimeSpan)(DateTime.Now - starttime)).TotalSeconds;
+                //long time = (long)((TimeSpan)(DateTime.Now - starttime)).TotalSeconds;
+                long time = 100;
                 if (time > 600)
                 {
                     visited = -1;
@@ -78,7 +79,9 @@ namespace Game.Engine.Interactions.ElfStory
             switch (choice)
             {
                 case 0:
-                    starttime = DateTime.Now;
+                    parentSession.SendText("\nHurry... I will die in 10 minutes...");
+                    //starttime = DateTime.Now;
+                    parentSession.SendText("\nHurry... I will die in 10 minutes...");
                     parentSession.AddThisItem(new Game.Engine.Items.QuestItem.ElfsSack());
                     parentSession.SendText("\nHurry... I will die in 10 minutes...");
                     visited = 1;

@@ -8,8 +8,9 @@ namespace Game.Engine.Interactions.ElfStory
 {
     class ElfSorcererEncounter : ConsoleInteraction
     {
+        private List<ElfCave> caves = new List<ElfCave>();
         public IElfStrategy Strategy { get; set; }
-        public ElfSorcererEncounter(GameSession ses) : base(ses)
+        public ElfSorcererEncounter(GameSession session, List<ElfCave> caves) : base(session)
         {
             Name = "interaction0009";
             Strategy = new ElfHostileStrategy(); // start with hostile strategy

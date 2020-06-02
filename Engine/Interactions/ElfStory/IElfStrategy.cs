@@ -8,6 +8,6 @@ namespace Game.Engine.Interactions.ElfStory
 {
     interface IElfStrategy
     {
-        void Execute(GameSession sesion);
+        void Execute(GameSession session);
     }
 }

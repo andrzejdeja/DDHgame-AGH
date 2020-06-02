@@ -11,7 +11,7 @@ namespace Game.Engine.Items.QuestItem
         public ElfsSack() : base("item0013")
         {
             GoldValue = 10;
-            PublicName = "Elven Priest's Key";
+            PublicName = "Elven Priest's Sack";
         }
     }
 

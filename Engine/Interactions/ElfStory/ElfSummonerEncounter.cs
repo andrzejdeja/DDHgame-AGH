@@ -9,7 +9,7 @@ namespace Game.Engine.Interactions.ElfStory
     class ElfSummonerEncounter : ConsoleInteraction
     {
         public IElfStrategy Strategy { get; set; }
-        public ElfSummonerEncounter(GameSession ses) : base(ses)
+        public ElfSummonerEncounter(GameSession session) : base(session)
         {
             Name = "interaction0010";
             Strategy = new ElfHostileStrategy(); // start with default strategy

@@ -10,7 +10,7 @@ namespace Game.Engine.Interactions.ElfStory
     class ElfChest : ConsoleInteraction
     {
         public bool visited = false;
-        public ElfChest (GameSession ses) : base(ses)
+        public ElfChest (GameSession session) : base(session)
         {
             Name = "interaction0005";
         }

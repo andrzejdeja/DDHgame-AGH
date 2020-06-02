@@ -10,7 +10,7 @@ namespace Game.Engine.Interactions.ElfStory
     class ElfCave : ConsoleInteraction
     {
         public bool visited = false;
-        public ElfCave(GameSession ses) : base(ses)
+        public ElfCave(GameSession session) : base(session)
         {
             Name = "interaction0011";
         }
